@@ -5,6 +5,15 @@
 Leverage modern package managers.
   - [NPM](https://www.npmjs.com/)
   - [Bower](http://bower.io)
+
+#### Features over Geotab/Generator-addin
+Modified generator-addin/generators/app/index.js and generator-addin/generators/app/templates to
+
+  - Support additional CSS files for Mygeotab and Geotab Drive
+  - Index.html that demos best practice to add/remove event handlers on focus/blur
+  - Additional helper scripts, like start_server.sh and build.sh
+  - Adding of Geotab favicon.ico
+  - 3-digit version numbering in config.json
   
 #### Local Debugging
   - Run and debug the add-in localy without having to add to test database. MyGeotabApi mocks the API object passes to add-in to make requests to you test database.

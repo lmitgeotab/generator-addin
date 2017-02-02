@@ -1,27 +1,40 @@
 /**
  * @returns {{initialize: Function, focus: Function, blur: Function}}
  */
-geotab.addin.<%= root %> = function () {
+
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
+
+geotab.addin.encompassUserSync = function (api, state) {
   'use strict';
 
-  // the root container
+  // the root container for all Global variables and functions in AddIn scope
   var elAddin;
+
+  var toggleBackground = function () {
+    elAddin.style.backgroundColor = '#FF0000';
+
+    setTimeout(function () {
+      elAddin.style.backgroundColor = '#FFFFFF';
+    }, 1000);
+  };
 
   return {
     /**
      * initialize() is called only once when the Add-In is first loaded. Use this function to initialize the
      * Add-In's state such as default values or make API requests (MyGeotab or external) to ensure interface
      * is ready for the user.
-     * @param {object} freshApi - The GeotabApi object for making calls to MyGeotab.
-     * @param {object} freshState - The page state object allows access to URL, page navigation and global group filter.
-     * @param {function} initializeCallback - Call this when your initialize route is complete. Since your initialize routine
+     * @param {object} api - The GeotabApi object for making calls to MyGeotab.
+     * @param {object} state - The page state object allows access to URL, page navigation and global group filter.
+     * @param {function} addInReady - Call this when your initialize route is complete. Since your initialize routine
      *        might be doing asynchronous operations, you must call this method when the Add-In is ready
      *        for display to the user.
      */
-    initialize: function (freshApi, freshState, initializeCallback) {
-      elAddin = document.querySelector('#<%= root %>');
-      // MUST call initializeCallback when done any setup
-      initializeCallback();
+    initialize: function (api, state, addInReady) {
+      elAddin = document.querySelector('#encompassUserSync');
+
+      // MUST call addInReady when done any setup
+      addInReady();
     },
 
     /**
@@ -32,19 +45,22 @@ geotab.addin.<%= root %> = function () {
      * the global state of the MyGeotab application changes, for example, if the user changes the global group
      * filter in the UI.
      *
-     * @param {object} freshApi - The GeotabApi object for making calls to MyGeotab.
-     * @param {object} freshState - The page state object allows access to URL, page navigation and global group filter.
+     * @param {object} api - The GeotabApi object for making calls to MyGeotab.
+     * @param {object} state - The page state object allows access to URL, page navigation and global group filter.
      */
-    focus: function (freshApi, freshState) {
+    focus: function (api, state) {
       // example of setting url state
-      freshState.setState({
+      state.setState({
         hello: 'world'
       });
 
       // getting the current user to display in the UI
-      freshApi.getSession(session => {
-        document.querySelector('#<%= root %>-user').textContent = `${session.userName}'s`;
+      api.getSession(session => {
+        document.querySelector('#encompassUserSync-user').textContent = `${session.userName}'s`;
       });
+
+      // Set Handlers
+      elAddin.addEventListener('click', toggleBackground);
 
       // show main content
       elAddin.className = '';
@@ -55,12 +71,16 @@ geotab.addin.<%= root %> = function () {
      *
      * Use this function to save the page state or commit changes to a data store or release memory.
      *
-     * @param {object} freshApi - The GeotabApi object for making calls to MyGeotab.
-     * @param {object} freshState - The page state object allows access to URL, page navigation and global group filter.
+     * @param {object} api - The GeotabApi object for making calls to MyGeotab.
+     * @param {object} state - The page state object allows access to URL, page navigation and global group filter.
      */
-    blur: function () {
-      // hide main content
+    blur: function (api, state) {
+
+      // Hide main content
       elAddin.className = 'hidden';
+
+      // Remove Handlers
+      elAddin.removeEventListener('click', toggleBackground);
     }
   };
 };

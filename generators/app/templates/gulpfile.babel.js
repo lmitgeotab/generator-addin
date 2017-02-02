@@ -84,8 +84,8 @@ gulp.task('html', ['styles', 'scripts'], () => {
       searchPath: ['.tmp', 'app', '.']
     }))
     .pipe($.if('*.js', $.uglify()))
-    .pipe($.if('*.css', $.cssSandbox('#' + options.root)))
-    .pipe($.if('*.css', $.cssnano()))
+//    .pipe($.if('*.css', $.cssSandbox('#' + options.root)))
+//    .pipe($.if('*.css', $.cssnano()))
     // convert relative urls to absolute
     .pipe($.if('*.html', $.cdnizer({
       defaultCDNBase: options.dist.host,

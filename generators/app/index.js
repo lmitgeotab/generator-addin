@@ -30,7 +30,7 @@ module.exports = yeoman.Base.extend({
       default: false,
       choices: [{
         name: 'Root',
-        value: '/'
+        value: ''
       }, {
         name: 'Getting Started',
         value: 'GettingStartedLink/'
@@ -142,6 +142,16 @@ module.exports = yeoman.Base.extend({
           root: this.props.camelName
         }
       );
+
+      this.fs.copy(
+        this.templatePath('build.sh'),
+        this.destinationPath('build.sh')
+      );
+
+      this.fs.copy(
+        this.templatePath('start_server.sh'),
+        this.destinationPath('start_server.sh')
+      );
     },
 
     config: function () {
@@ -173,12 +183,32 @@ module.exports = yeoman.Base.extend({
         this.templatePath('app/styles/main.css'),
         this.destinationPath('app/styles/main.css')
       );
+
+      this.fs.copy(
+        this.templatePath('app/styles/geotabdrive.css'),
+        this.destinationPath('app/styles/geotabdrive.css')
+      );
+
+      this.fs.copy(
+        this.templatePath('app/styles/geotab.css'),
+        this.destinationPath('app/styles/geotab.css')
+      );
+
+      this.fs.copy(
+        this.templatePath('app/styles/checkmate.css'),
+        this.destinationPath('app/styles/checkmate.css')
+      );
     },
 
     icon: function () {
       this.fs.copy(
         this.templatePath('app/images/icon.svg'),
         this.destinationPath('app/images/icon.svg')
+      );
+
+      this.fs.copy(
+        this.templatePath('app/favicon.ico'),
+        this.destinationPath('app/favicon.ico')
       );
     },
 

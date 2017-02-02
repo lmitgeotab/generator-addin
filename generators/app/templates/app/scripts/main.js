@@ -5,7 +5,7 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
 
-geotab.addin.encompassUserSync = function (api, state) {
+geotab.addin.<%= root %> = function (api, state) {
   'use strict';
 
   // the root container for all Global variables and functions in AddIn scope
@@ -31,7 +31,7 @@ geotab.addin.encompassUserSync = function (api, state) {
      *        for display to the user.
      */
     initialize: function (api, state, addInReady) {
-      elAddin = document.querySelector('#encompassUserSync');
+      elAddin = document.querySelector('#<%= root %>');
 
       // MUST call addInReady when done any setup
       addInReady();
@@ -56,7 +56,7 @@ geotab.addin.encompassUserSync = function (api, state) {
 
       // getting the current user to display in the UI
       api.getSession(session => {
-        document.querySelector('#encompassUserSync-user').textContent = `${session.userName}'s`;
+        document.querySelector('#<%= root %>-user').textContent = `${session.userName}'s`;
       });
 
       // Set Handlers

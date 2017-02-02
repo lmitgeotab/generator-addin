@@ -10,6 +10,7 @@ Leverage modern package managers.
 Modified generator-addin/generators/app/index.js and generator-addin/generators/app/templates to
 
   - Support additional CSS files for Mygeotab and Geotab Drive
+  - **api** and **state** function parameters added to Add-In global namespace
   - Index.html that demos best practice to add/remove event handlers on focus/blur
   - Additional helper scripts, like start_server.sh and build.sh
   - Adding of Geotab favicon.ico

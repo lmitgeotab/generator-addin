@@ -1,5 +1,5 @@
-# generator-addin [![NPM version][npm-image]][npm-url] [![Build Status](https://travis-ci.org/Geotab/generator-addin.svg?branch=master)](https://travis-ci.org/Geotab/generator-addin)
-> Yeoman generator for MyGeotab/Geotab Drive add-ins
+# generator-addin
+> Yeoman generator for MyGeotab/Geotab Drive Add-Ins
 
 ## Features
 Leverage modern package managers.
@@ -17,7 +17,7 @@ Modified generator-addin/generators/app/index.js and generator-addin/generators/
   - 3-digit version numbering in config.json
   
 #### Local Debugging
-  - Run and debug the add-in localy without having to add to test database. MyGeotabApi mocks the API object passes to add-in to make requests to you test database.
+  - Run and debug the Add-In localy without having to add to Geotab database. MyGeotabApi mocks the API object passes to Add-In to make requests to your Geotab database.
   - Mock state - Drive add-in will try to use HTML5 features to mock Andoid/IOS device features (ex. Geoloaction)
   - Automagically lint your scripts
   - Built-in preview server with BrowserSync
@@ -35,7 +35,8 @@ Modified generator-addin/generators/app/index.js and generator-addin/generators/
 
 ## Getting Started
 - Install dependencies: `npm install -g yo gulp-cli bower`
-- Install the generator: `npm install -g generator-addin`
+- uninstall any other add-in generator: : `npm -g uninstall generator-addin`
+  Otherwise Install the generator: `npm install -g https://github.com/lmitgeotab/generator-addin`
 - Create a directory for your project `mkdir <projdir>`
 - Change to your project `cd <projdir>`
 - Run `yo addin` to scaffold your addin
@@ -45,7 +46,7 @@ Modified generator-addin/generators/app/index.js and generator-addin/generators/
 - Run `gulp build` to build your addin for production
 
 ## Documentation
-For information on MyGeotab and Geotab Drive addins or the MyGeotab API head over to the [MyGeotab SDK](https://my.geotab.com/sdk/default.html)
+For information on MyGeotab and Geotab Drive Add-Ins or the MyGeotab API head over to the [MyGeotab SDK](https://my.geotab.com/sdk/default.html)
 
 ## License
 

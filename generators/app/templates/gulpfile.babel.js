@@ -143,7 +143,8 @@ let mockAddinHost = sourceDir => {
     });
 
     if (parsed.pathname === '/' || parsed.pathname.match(/\.html$/)) {
-      htmlSource = fs.readFileSync(parsed.pathname === '/' ? sourceDir + '/' + config.dev.root + '.html' : parsed.pathname, 'utf8');
+      var fileSource = parsed.pathname === '/' ? sourceDir + '/' + config.dev.root + '.html' : sourceDir + parsed.pathname;
+      htmlSource = fs.readFileSync(fileSource, 'utf8');
 
       pos = htmlSource.indexOf(script);
       if (pos > -1) {
